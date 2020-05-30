@@ -1,0 +1,10 @@
+bond,reaction,disEnergy
+C-H,CH to C + H,339
+C-H,CH2 to CH + H,421.7
+C-H,CH3 to CH2 + H,473
+C-H,CH4 to CH3 + H,431.8
+C-O,CO to C + O,1076.5
+C-O,CO2 to CO + O,532.2
+C-O,CH3OH to CH3 + OH,377
+O-H,OH to O + H,428
+O-H,H20 to OH + H,498.7
