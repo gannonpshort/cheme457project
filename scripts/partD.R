@@ -23,7 +23,7 @@ KpPlot <- ggplot(data = conversion) +
   xlab("Temperature (Celcius)") +
   ylab("Kp (atm^-2) Log10 Scale")
 
-ggsave("pics/KpPlot.pdf")
+ggsave("pics/Figure8.pdf")
 
 # d.ii.
 
@@ -52,13 +52,17 @@ press100 <- conversion %>%
 temp <- seq(100, 400, 25)
 zed <- numeric(length(temp))
 nComp1 <- data.frame(temp, "nDiox" = zed, "nHyd" = zed, "nMeOH" = zed, "nWat" = zed) %>%
-  mutate("pressure" = rep("1 atm", length(temp)))
+  mutate("pressure" = rep("1 atm", length(temp))) %>%
+  mutate("P" = rep(1,length(temp)))
 nComp10 <- nComp1 %>%
-  mutate("pressure" = rep("10 atm", length(temp)))
+  mutate("pressure" = rep("10 atm", length(temp))) %>%
+  mutate("P" = rep(10,length(temp)))
 nComp50 <- nComp1 %>%
-  mutate("pressure" = rep("50 atm", length(temp)))
+  mutate("pressure" = rep("50 atm", length(temp))) %>%
+  mutate("P" = rep(50,length(temp)))
 nComp100 <- nComp1 %>%
-  mutate("pressure" = rep("100 atm", length(temp)))
+  mutate("pressure" = rep("100 atm", length(temp))) %>%
+  mutate("P" = rep(100,length(temp)))
 
 gasRange <- c(0, 1000)
 
@@ -114,19 +118,27 @@ KPlot <- ggplot(data = nComp) +
   labs(title = "Figure 9",
        subtitle = "Equilibrium Constant for Reaction One from Conversion Data") +
   xlab("Temperature (Celcius)") +
-  ylab("K (mol^-2) Log10 Scale")
+  ylab("K (L mol^-2) Log10 Scale")
 
-ggsave("pics/KPlot.pdf")
+ggsave("pics/Figure9.pdf")
 
 # d.iv.
 
 nComp <- nComp %>%
   mutate("lnK" = log(K))
 
-ggplot(data = nComp) +
-  geom_line(mapping = aes(x = pressure, y = lnK, color = temp))
+lnKPlot <- ggplot(data = nComp %>% filter(temp == 100)) +
+  geom_line(mapping = aes(x = P, y = lnK)) +
+  labs(title = "Figure 10",
+       subtitle = "How Equilibrium Depends on Pressure") +
+  xlab("Pressure (atm)") +
+  ylab("K (L mol^-2) Ln Scale")
 
+ggsave("pics/Figure10.pdf")
 
+dlnKdP <- (29.43 - 22.53) / (100 - 10)
+k1 <- 8.206e-5
+dv = -dlnKdP * k1 * (273 + 100)
 
 
 

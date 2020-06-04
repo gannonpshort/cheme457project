@@ -100,6 +100,8 @@ ggplotly(KPlot)
 
 # d.iv.
 
+ggplotly(lnKPlot)
+
 print(dlnKdP)
 
 

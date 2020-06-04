@@ -87,7 +87,7 @@ KpPlotRxn1 <- ggplot(data = ReactionOne,
   xlab("Temperature (Celcius)") +
   ylab("Kp (atm^-2) Log10 Scale")
 
-ggsave("pics/KpPlotRxn1.pdf")
+ggsave("pics/Figure1.pdf")
 
 # b.iii.
 
@@ -102,7 +102,7 @@ HoffPlotRxn1 <- ggplot(data = ReactionOne,
   ylab("Kp (atm^-2) Natural Log Scale") +
   labs(caption = "Figure")
 
-ggsave("pics/HoffPlotRxn1.pdf")
+ggsave("pics/Figure2.pdf")
 
 deltaHRxn1 <- -R * (ReactionOne$lnKp[500] - ReactionOne$lnKp[600]) /
   (ReactionOne$inverseTemp[500] - ReactionOne$inverseTemp[600]) # kJ/mol
