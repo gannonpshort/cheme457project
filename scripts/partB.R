@@ -82,9 +82,12 @@ KpPlotRxn1 <- ggplot(data = ReactionOne,
                    x = temp,
                    y = log10Kp)) +
   geom_line() +
-  ggtitle("Reaction One Equilibrium Constant") +
+  labs(title = "Figure 1",
+       subtitle = "Reaction One Equilibrium Constant") +
   xlab("Temperature (Celcius)") +
   ylab("Kp (atm^-2) Log10 Scale")
+
+ggsave("pics/KpPlotRxn1.pdf")
 
 # b.iii.
 
@@ -93,9 +96,13 @@ HoffPlotRxn1 <- ggplot(data = ReactionOne,
                      x = inverseTemp,
                      y = lnKp)) +
   geom_line() +
-  ggtitle("Reaction One van't Hoff Plot") +
-  xlab("Temperature (Celcius)") +
-  ylab("Kp (atm^-2) Natural Log Scale")
+  labs(title = "Figure 2",
+       subtitle = "Reaction One van't Hoff Plot") +
+  xlab("Temperature (Celcius^-1)") +
+  ylab("Kp (atm^-2) Natural Log Scale") +
+  labs(caption = "Figure")
+
+ggsave("pics/HoffPlotRxn1.pdf")
 
 deltaHRxn1 <- -R * (ReactionOne$lnKp[500] - ReactionOne$lnKp[600]) /
   (ReactionOne$inverseTemp[500] - ReactionOne$inverseTemp[600]) # kJ/mol

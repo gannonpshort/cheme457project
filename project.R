@@ -34,6 +34,7 @@ KpRxn1 <- function(temp) {
 
 ggplotly(KpPlotRxn1)
 
+
 # b.iii.
 
 ggplotly(HoffPlotRxn1)
@@ -93,4 +94,16 @@ source("scripts/partD.R")
 
 ggplotly(KpPlot)
 
+# d.ii.
+
 ggplotly(KPlot)
+
+# d.iv.
+
+print(dlnKdP)
+
+
+
+
+
+

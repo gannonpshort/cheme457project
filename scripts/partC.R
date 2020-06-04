@@ -94,9 +94,12 @@ KpPlotRxn2 <- ggplot(data = ReactionTwo,
                        x = temp,
                        y = log10Kp)) +
   geom_line() +
-  ggtitle("Reaction Two Equilibrium Constant") +
+  labs(title = "Figure 3",
+       subtitle = "Reaction Two Equilibrium Constant") +
   xlab("Temperature (Celcius)") +
   ylab("Kp (atm^-2) Log10 Scale")
+
+ggsave("pics/KpPlotRxn2.pdf")
 
 # c.iv.
 
@@ -105,9 +108,12 @@ HoffPlotRxn2 <- ggplot(data = ReactionTwo,
                      x = inverseTemp,
                      y = lnKp)) +
   geom_line() +
-  ggtitle("Reaction Two van't Hoff Plot") +
-  xlab("Temperature (Celcius)") +
+  labs(title = "Figure 4",
+       subtitle = "Reaction Two van't Hoff Plot") +
+  xlab("Temperature (Celcius^-1)") +
   ylab("Kp (atm^-2) Natural Log Scale")
+
+ggsave("pics/HoffPplotRxn2.pdf")
 
 deltaHRxn2 <- -R *(ReactionTwo$lnKp[300] - ReactionTwo$lnKp[1100]) /
   (ReactionTwo$inverseTemp[300] - ReactionTwo$inverseTemp[1100])
@@ -138,9 +144,12 @@ hPlotRxn2 <- ggplot(data = ReactionTwo,
                       x = temp,
                       y = deltaH)) +
   geom_line() +
-  ggtitle("Delta H for Reaction Two") +
+  labs(title = "Figure 5",
+       subtitle = "Delta H for Reaction Two") +
   xlab("Temperature (Celcius)") +
   ylab("Delta H (kJ/mol)")
+
+ggsave("pics/hPlotRxn1.pdf")
 
 # deltaU
 
@@ -153,9 +162,12 @@ uPlotRxn2 <- ggplot(data = ReactionTwo,
                        x = temp,
                        y = deltaU)) +
   geom_line() +
-  ggtitle("Delta u for Reaction Two") +
+  labs(title = "Figure 6",
+       subtitle = "Delta u for Reaction Two") +
   xlab("Temperature (Celcius)") +
   ylab("Delta u (kJ/mol)")
+
+ggsave("pics/uPlotRxn1.pdf")
 
 # deltaS
 
@@ -168,6 +180,9 @@ sPlotRxn2 <- ggplot(data = ReactionTwo,
                       x = temp,
                       y = deltaS)) +
   geom_line() +
-  ggtitle("Delta S for Reaction Two") +
+  labs(title = "Figure 7",
+       subtitle = "Delta S for Reaction Two") +
   xlab("Temperature (Celcius)") +
   ylab("Delta S (kJ/mol)")
+
+ggsave("pics/sPlotRxn1.pdf")
